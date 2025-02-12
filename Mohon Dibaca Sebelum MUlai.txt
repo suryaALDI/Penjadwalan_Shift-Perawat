@@ -1,0 +1,3 @@
+Izin Pak Untuk menjalankan aplikasinya harus menggunakan live server!
+
+Sebelumnya Mohon Maaf dan Izin Pak Karena Aplikasinya masih dalam tahap pengembangan jadinya file aplikasi saat dibuka dengan VSCode saya mohon izin dibuka dari file splash.html dahulu pak dengan Live Server.

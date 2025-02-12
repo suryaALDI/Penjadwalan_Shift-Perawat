@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penjadwalan Shift Perawat</title>
+    <link rel="stylesheet" href="Css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Tambahkan Chart.js -->
+</head>
+<body>
+    <div class="container">
+        <!-- Heading Utama -->
+        <header class="header">
+            <h1>Penjadwalan Shift Perawat</h1>
+        </header>
+
+        <!-- Form Tambah Perawat -->
+        <section class="form-section">
+            <h2>Tambah Perawat</h2>
+            <form id="addNurseForm">
+                <label for="nurseName">Nama Perawat:</label>
+                <input type="text" id="nurseName" placeholder="Masukkan nama perawat" required>
+                
+                <label for="nursePosition">Jabatan Perawat:</label>
+                <select id="nursePosition" required>
+                    <option value="" disabled selected>Pilih Jabatan</option>
+                    <option value="karu">Karu</option>
+                    <option value="katim">Katim</option>
+                    <option value="perawat">Perawat</option>
+                </select>
+                
+                <button type="submit">Tambah</button>
+            </form>            
+        </section>
+
+        <!-- Tabel Daftar Perawat -->
+        <section class="table-section">
+            <h2>Daftar Perawat</h2>
+            <table id="nurseTable">
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Jabatan</th>
+                        <th>Cuti (Hari)</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+        <!-- Generate Jadwal -->
+        <section class="generate-section">
+            <h2>Generate Jadwal</h2>
+            <label for="bulanSelect">Pilih Bulan:</label>
+            <select id="bulanSelect" required>
+                <option value="" disabled selected>Pilih bulan</option>
+                <option value="1">Januari</option>
+                <option value="2">Februari</option>
+                <option value="3">Maret</option>
+                <option value="4">April</option>
+                <option value="5">Mei</option>
+                <option value="6">Juni</option>
+                <option value="7">Juli</option>
+                <option value="8">Agustus</option>
+                <option value="9">September</option>
+                <option value="10">Oktober</option>
+                <option value="11">November</option>
+                <option value="12">Desember</option>
+            </select>
+            <button id="generateJadwal" class="btn-primary">Generate Jadwal</button>
+        </section>
+
+        <!-- Tabel Jadwal -->
+        <section class="table-section">
+            <h2>Jadwal Perawat</h2>
+            <table id="jadwalTable"></table>
+        </section>
+
+        <!-- Statistik Beban Kerja -->
+        <section class="stats-section">
+            <h2>Statistik Beban Kerja</h2>
+            <div id="workloadStats"></div>
+        </section>
+
+        <!-- Grafik Beban Kerja -->
+        <section class="chart-section">
+            <h2>Grafik Beban Kerja</h2>
+            <canvas id="workloadChart"></canvas>
+        </section>
+
+        <!-- Rekapan Cuti -->
+        <section class="leave-summary-section">
+            <h2>Rekapan Cuti 6 Bulan Terakhir</h2>
+            <div id="leaveSummary"></div>
+        </section>
+
+        <!-- Unduh Jadwal -->
+        <section class="download-section">
+            <h2>Unduh Jadwal</h2>
+            <button id="downloadExcel" class="btn-secondary">Unduh Excel</button>
+        </section>
+    </div>
+
+    <!-- Modal Overlay -->
+    <div id="modalOverlay" class="modal-overlay"></div>
+
+    <!-- Modal Edit Perawat -->
+    <div id="editModal" class="modal" role="dialog" aria-labelledby="editModalTitle">
+        <h2 id="editModalTitle" hidden>Edit Perawat</h2>
+        <form>
+            <label for="editName">Nama Perawat:</label>
+            <input type="text" id="editName" required>
+            
+            <label for="editPosition">Jabatan Perawat:</label>
+            <select id="editPosition" required>
+                <option value="karu">Karu</option>
+                <option value="katim">Katim</option>
+                <option value="perawat">Perawat</option>
+            </select>
+            
+            <button type="submit">Simpan</button>
+        </form>
+    </div>
+    
+    <!-- Modal Atur Cuti Perawat -->
+    <div class="modal" id="cutiModal" role="dialog" aria-labelledby="cutiModalTitle">
+        <div class="modal-content">
+            <button class="close-modal" aria-label="Tutup jendela">&times;</button>
+            <h2 id="cutiModalTitle">Atur Cuti Perawat</h2>
+            <form>
+                <label for="cutiDays">Pilih Hari Cuti:</label>
+                <input type="text" id="cutiDays" placeholder="Contoh: 1, 2, 3 (pisahkan dengan koma)">
+                <button type="submit">Simpan</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notifikasi -->
+    <div id="notification" class="notification" aria-live="polite"></div>
+
+    <!-- Firebase SDK -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js"></script>
+
+    <!-- Script Aplikasi -->
+    <script type="module" src="Js/firebase-config.js"></script>
+    <script type="module" src="Js/genetic.js"></script>
+    <script type="module" src="Js/utils.js"></script>
+    <script type="module" src="Js/app.js"></script>
+</body>
+</html>

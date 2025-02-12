@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+    <link rel="stylesheet" href="Css/splash-style.css"> <!-- CSS Khusus Splash Screen -->
+</head>
+<body>
+    <!-- Halaman Splash Screen -->
+    <div id="splash-screen">
+        <img src="Assets/logo-rsia-anugrah.jpg" alt="Logo Penjadwalan Shift" id="splash-logo">
+        <h1>Penjadwalan Shift Perawat</h1>
+        <p>Loading...</p>
+    </div>
+
+    <!-- Script untuk pindah ke halaman utama -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const splashScreen = document.getElementById('splash-screen');
+            // Tambahkan efek fade-out
+            setTimeout(() => {
+                splashScreen.classList.add('fade-out');
+                setTimeout(() => {
+                    window.location.href = "index.html";
+                }, 1000); // Waktu animasi fade-out
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

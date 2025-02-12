@@ -1,0 +1,323 @@
+/* Style Utama untuk Aplikasi Penjadwalan Shift Perawat */
+:root {
+  --primary-color: #4CAF50;
+  --secondary-color: #337ab7;
+  --danger-color: #d9534f;
+  --warning-color: #f0ad4e;
+  --info-color: #5bc0de;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+/* Container Utama */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 10px;
+  background-color: var(--primary-color);
+  color: white;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+/* Form Tambah Perawat */
+.form-section h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+form label {
+  font-weight: bold;
+}
+
+form input,
+form select {
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 100%;
+}
+
+form button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+form button:hover {
+  background-color: #45a049;
+}
+
+/* Tabel Daftar Perawat */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+table thead {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+table tr:hover {
+  background-color: #e0f7fa;
+  transition: background-color 0.3s ease;
+}
+
+table th {
+  padding: 10px;
+  text-align: center;
+}
+
+/* Tombol */
+button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+button:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #45a049;
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #286090;
+}
+
+button.edit-btn {
+  background-color: var(--info-color);
+  color: white;
+}
+
+button.edit-btn:hover {
+  background-color: #31b0d5;
+}
+
+button.cuti-btn {
+  background-color: var(--warning-color);
+  color: white;
+}
+
+button.cuti-btn:hover {
+  background-color: #ec971f;
+}
+
+button.delete-btn {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+button.delete-btn:hover {
+  background-color: #c9302c;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 999;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: none;
+}
+
+.modal-content {
+  text-align: center;
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+}
+
+.modal-content button {
+  margin-top: 10px;
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Notifikasi */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: -100%;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: block;
+  z-index: 1000;
+  transition: right 0.5s ease-in-out;
+}
+
+.notification.show {
+  right: 20px;
+}
+
+.notification.notification-error {
+  background-color: var(--danger-color);
+}
+
+.notification.notification-warning {
+  background-color: var(--warning-color);
+}
+
+/* Generate Jadwal Section */
+.generate-section {
+  margin: 20px 0;
+}
+
+.generate-section button {
+  margin-top: 10px;
+}
+
+/* Jadwal Perawat */
+.table-section {
+  margin-top: 20px;
+}
+
+#jadwalTable th {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+#jadwalTable td {
+  text-align: center;
+}
+
+/* Statistik Beban Kerja */
+.stats-section {
+  margin-top: 20px;
+}
+
+.stats-section div {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+/* Grafik Beban Kerja */
+.chart-section {
+  margin-top: 20px;
+}
+
+/* Rekapan Cuti */
+.leave-summary-section {
+  margin-top: 20px;
+}
+
+.leave-summary-section div {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+/* Unduh Jadwal */
+.download-section {
+  margin-top: 20px;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .container {
+      padding: 10px;
+  }
+
+  table {
+      font-size: 12px;
+  }
+
+  form input,
+  form select,
+  form button {
+      font-size: 12px;
+  }
+
+  .modal {
+      width: 90%;
+      padding: 10px;
+  }
+}

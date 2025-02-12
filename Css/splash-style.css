@@ -1,0 +1,95 @@
+/* Styling untuk Halaman Splash Screen */
+#splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color, #4CAF50); /* Warna latar hijau */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 2em;
+    z-index: 9999;
+    animation: fadeIn 1s ease-out;
+}
+
+#splash-screen h1 {
+    margin: 20px 0 10px 0;
+    font-size: 2.5em;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+#splash-screen p {
+    font-size: 1.2em;
+    font-style: italic;
+    animation: fade 1.5s infinite;
+}
+
+/* Logo Styling */
+#splash-logo {
+    width: 150px; /* Ukuran logo */
+    height: auto;
+    margin-bottom: 20px; /* Jarak antara logo dan teks */
+    animation: bounce 2s infinite ease-in-out;
+}
+
+/* Animasi Loading Teks */
+@keyframes fade {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Animasi Bounce untuk Logo */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Animasi Fade In untuk Splash Screen */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Transisi untuk Efek Fade-Out */
+#splash-screen.fade-out {
+    animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+/* Responsivitas untuk Layar Kecil */
+@media (max-width: 768px) {
+    #splash-screen h1 {
+        font-size: 2em;
+    }
+
+    #splash-screen p {
+        font-size: 1em;
+    }
+
+    #splash-logo {
+        width: 120px; /* Ukuran logo lebih kecil */
+    }
+}
